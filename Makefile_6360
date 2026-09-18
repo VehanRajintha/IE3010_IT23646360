@@ -1,0 +1,54 @@
+# ==============================================================================
+# Module:      IE3010 - Network Programming (Year 3, Semester 2)
+# Student ID:  IT23646360
+# File Name:   Makefile_6360
+# Description: Personalised Makefile for NetMessenger Multi-Client Application
+# ==============================================================================
+
+CC      = gcc
+CFLAGS  = -Wall -Wextra -pthread -O2 -std=gnu11
+LDFLAGS = -pthread
+
+SERVER_SRC = server_6360.c
+CLIENT_SRC = client_6360.c
+
+SERVER_BIN = server_6360
+CLIENT_BIN = client_6360
+
+REG_NO     = IT23646360
+ZIP_NAME   = IE3010_$(REG_NO).zip
+STORAGE_DIR = storage/IT23646360
+
+.PHONY: all server client clean directories zip help
+
+all: directories $(SERVER_BIN) $(CLIENT_BIN)
+
+$(SERVER_BIN): $(SERVER_SRC)
+	@echo "[CC] Compiling Server ($@)..."
+	$(CC) $(CFLAGS) $(SERVER_SRC) -o $(SERVER_BIN) $(LDFLAGS)
+
+$(CLIENT_BIN): $(CLIENT_SRC)
+	@echo "[CC] Compiling Client ($@)..."
+	$(CC) $(CFLAGS) $(CLIENT_SRC) -o $(CLIENT_BIN) $(LDFLAGS)
+
+directories:
+	@mkdir -p $(STORAGE_DIR)
+	@mkdir -p downloads
+
+clean:
+	@echo "[CLEAN] Removing binaries and build artefacts..."
+	rm -f $(SERVER_BIN) $(CLIENT_BIN) *.o
+	rm -rf downloads
+
+zip:
+	@echo "[ZIP] Packaging submission archive $(ZIP_NAME)..."
+	zip -r $(ZIP_NAME) $(SERVER_SRC) $(CLIENT_SRC) Makefile_6360 netmsg_$(REG_NO).log Implementation_Report.md prompt_log.md reflection.md design_diary.md README.md
+
+help:
+	@echo "NetMessenger Build System (Student ID: $(REG_NO))"
+	@echo "Usage:"
+	@echo "  make -f Makefile_6360          # Compile both server and client"
+	@echo "  make -f Makefile_6360 server   # Compile server only"
+	@echo "  make -f Makefile_6360 client   # Compile client only"
+	@echo "  make -f Makefile_6360 clean    # Remove compiled binaries"
+	@echo "  make -f Makefile_6360 zip      # Package submission ZIP archive"

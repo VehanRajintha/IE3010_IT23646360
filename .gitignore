@@ -1,0 +1,13 @@
+# Binaries and object files
+*.o
+server_6360
+client_6360
+*.exe
+
+# Archive output
+IE3010_*.zip
+
+# Temporary files
+downloads/
+.DS_Store
+Thumbs.db
