@@ -1,0 +1,36 @@
+[2026-10-05 21:00:00] [STARTUP] ==================================================
+[2026-10-05 21:00:00] [STARTUP] NetMessenger Server Starting
+[2026-10-05 21:00:00] [STARTUP] Registration No: IT23646360
+[2026-10-05 21:00:00] [STARTUP] Assigned Port:   12360
+[2026-10-05 21:00:00] [STARTUP] Node ID Tag:     NID:6463
+[2026-10-05 21:00:00] [STARTUP] Log File:        netmsg_IT23646360.log
+[2026-10-05 21:00:00] [STARTUP] Storage Base:    ./storage/IT23646360
+[2026-10-05 21:00:00] [STARTUP] ==================================================
+[2026-10-05 21:00:00] [LISTENING] Server successfully bound and listening on 0.0.0.0:12360
+[2026-10-05 21:02:14] [CONNECT] Accepted new client from 127.0.0.1:54120 (assigned fd 4)
+[2026-10-05 21:02:18] [REGISTRATION_SUCCESS] Client fd 4 registered as 'alice'
+[2026-10-05 21:03:02] [CONNECT] Accepted new client from 127.0.0.1:54122 (assigned fd 5)
+[2026-10-05 21:03:06] [REGISTRATION_SUCCESS] Client fd 5 registered as 'bob'
+[2026-10-05 21:03:40] [CONNECT] Accepted new client from 127.0.0.1:54124 (assigned fd 6)
+[2026-10-05 21:03:45] [REGISTRATION_REJECTED] Username 'alice' already taken by fd 4
+[2026-10-05 21:03:52] [REGISTRATION_SUCCESS] Client fd 6 registered as 'charlie'
+[2026-10-05 21:04:15] [CONNECT] Accepted new client from 127.0.0.1:54126 (assigned fd 7)
+[2026-10-05 21:04:20] [REGISTRATION_SUCCESS] Client fd 7 registered as 'dave'
+[2026-10-05 21:04:40] [CONNECT] Accepted new client from 127.0.0.1:54128 (assigned fd 8)
+[2026-10-05 21:04:45] [REGISTRATION_SUCCESS] Client fd 8 registered as 'eve'
+[2026-10-05 21:05:10] [BROADCAST] From 'alice': Hello everyone, welcome to NetMessenger on port 12360!
+[2026-10-05 21:05:32] [PRIVATE_MSG] From 'bob' to 'charlie': Hey Charlie, did you review the lab requirements?
+[2026-10-05 21:05:48] [PRIVATE_MSG] From 'charlie' to 'bob': Yes, working on the file transfer framing now.
+[2026-10-05 21:06:12] [ROOM_JOIN] User 'alice' joined room 'general'
+[2026-10-05 21:06:18] [ROOM_JOIN] User 'bob' joined room 'general'
+[2026-10-05 21:06:24] [ROOM_JOIN] User 'charlie' joined room 'general'
+[2026-10-05 21:06:45] [ROOM_MSG] From 'alice' to room 'general': Let's share our project design docs in this room.
+[2026-10-05 21:07:15] [FILE_TRANSFER] Saved 'network_diagram.png' (248560 bytes) from 'alice' to './storage/IT23646360/alice/network_diagram.png'. Target: general
+[2026-10-05 21:08:02] [ROOM_JOIN] User 'dave' joined room 'exam_prep'
+[2026-10-05 21:08:14] [ROOM_JOIN] User 'eve' joined room 'exam_prep'
+[2026-10-05 21:08:35] [ROOM_MSG] From 'dave' to room 'exam_prep': Make sure you review pthread_mutex_lock for the viva.
+[2026-10-05 21:09:10] [ROOM_LEAVE] User 'charlie' left room 'general'
+[2026-10-05 21:10:05] [SECURITY] Rate limit exceeded by eve (fd 8)
+[2026-10-05 21:11:30] [QUIT] Client eve (fd 8) requested QUIT
+[2026-10-05 21:11:30] [DISCONNECT] Client 'eve' (fd 8) disconnected. Reason: Session concluded
+[2026-10-05 21:12:15] [DISCONNECT] Client 'dave' (fd 7) disconnected. Reason: Normal socket close
