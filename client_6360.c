@@ -346,7 +346,7 @@ int main(int argc, char *argv[]) {
                     printf("Usage: /bcast <message>\n");
                     continue;
                 }
-                char out[BUFFER_SIZE];
+                char out[BUFFER_SIZE + 512];
                 snprintf(out, sizeof(out), "BCAST %s\n", msg);
                 send_raw_bytes(sock_fd, out, strlen(out));
             } else if (strcmp(cmd, "/pmsg") == 0) {
@@ -354,7 +354,7 @@ int main(int argc, char *argv[]) {
                     printf("Usage: /pmsg <username> <message>\n");
                     continue;
                 }
-                char out[BUFFER_SIZE];
+                char out[BUFFER_SIZE + 512];
                 snprintf(out, sizeof(out), "PMSG %s %s\n", arg1, arg2);
                 send_raw_bytes(sock_fd, out, strlen(out));
             } else if (strcmp(cmd, "/join") == 0) {
@@ -380,7 +380,7 @@ int main(int argc, char *argv[]) {
                     printf("Usage: /rmsg <room> <message>\n");
                     continue;
                 }
-                char out[BUFFER_SIZE];
+                char out[BUFFER_SIZE + 512];
                 snprintf(out, sizeof(out), "RMSG %s %s\n", arg1, arg2);
                 send_raw_bytes(sock_fd, out, strlen(out));
             } else if (strcmp(cmd, "/sendfile") == 0) {
@@ -399,7 +399,7 @@ int main(int argc, char *argv[]) {
             }
         } else {
             /* Raw protocol command sent directly with \n appended */
-            char out[BUFFER_SIZE];
+            char out[BUFFER_SIZE + 512];
             snprintf(out, sizeof(out), "%s\n", input_line);
             send_raw_bytes(sock_fd, out, strlen(out));
         }
