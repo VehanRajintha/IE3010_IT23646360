@@ -23,6 +23,10 @@ STORAGE_DIR = storage/IT23646360
 
 all: directories $(SERVER_BIN) $(CLIENT_BIN)
 
+server: directories $(SERVER_BIN)
+
+client: directories $(CLIENT_BIN)
+
 $(SERVER_BIN): $(SERVER_SRC)
 	@echo "[CC] Compiling Server ($@)..."
 	$(CC) $(CFLAGS) $(SERVER_SRC) -o $(SERVER_BIN) $(LDFLAGS)
