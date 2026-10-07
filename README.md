@@ -1,7 +1,7 @@
 # NetMessenger: Multi-Client Chat and File-Sharing Platform over TCP/IP
 
 **Module:** IE3010 - Network Programming (Year 3, Semester 2)  
-**Student Name:** [Your Name]  
+**Student Name:** Vehan Rajintha  
 **Student Registration Number:** `IT23646360`  
 
 ---

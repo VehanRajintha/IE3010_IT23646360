@@ -7,7 +7,7 @@
 # IMPLEMENTATION REPORT
 ## NetMessenger: A Multi-Client Chat and File-Sharing Platform over TCP/IP
 
-**Student Name:** [Your Name]  
+**Student Name:** Vehan Rajintha  
 **Student Registration Number:** `IT23646360`  
 **Degree Programme:** BSc (Hons) in Information Technology / Information Systems Engineering  
 **Submission Date:** October 2026  
