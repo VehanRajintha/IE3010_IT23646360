@@ -102,7 +102,6 @@ static void send_response_ok(client_t *c, const char *msg);
 static void send_response_err(client_t *c, const char *code, const char *reason);
 static void forward_msg(int fd, const char *format, ...);
 static void make_directory_recursive(const char *path);
-static int read_exact(int fd, char *buffer, size_t count);
 
 /* Handler declarations */
 static void handle_client_disconnect(client_t *client, const char *reason);
@@ -257,8 +256,7 @@ static room_t *get_or_create_room(const char *room_name) {
     if (room_count >= MAX_ROOMS) return NULL;
 
     r = &rooms[room_count++];
-    strncpy(r->name, room_name, ROOM_NAME_MAX_LEN);
-    r->name[ROOM_NAME_MAX_LEN] = '\0';
+    snprintf(r->name, sizeof(r->name), "%s", room_name);
     r->member_count = 0;
     return r;
 }
@@ -275,7 +273,8 @@ static int is_room_member(const room_t *r, const char *username) {
 static int add_room_member(room_t *r, const char *username) {
     if (is_room_member(r, username)) return 1;
     if (r->member_count >= MAX_ROOM_MEMBERS) return 0;
-    strncpy(r->members[r->member_count++], username, USERNAME_MAX_LEN);
+    snprintf(r->members[r->member_count], sizeof(r->members[r->member_count]), "%s", username);
+    r->member_count++;
     return 1;
 }
 
