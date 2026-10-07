@@ -24,6 +24,7 @@
 
 #define _GNU_SOURCE
 #include <stdio.h>
+#include <stdarg.h>
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
@@ -212,18 +213,6 @@ static void make_directory_recursive(const char *path) {
         }
     }
     mkdir(tmp, 0755);
-}
-
-static int read_exact(int fd, char *buffer, size_t count) {
-    size_t total = 0;
-    while (total < count) {
-        ssize_t n = recv(fd, buffer + total, count - total, 0);
-        if (n <= 0) {
-            return -1;
-        }
-        total += n;
-    }
-    return 0;
 }
 
 /* Rate limiter: returns 1 if allowed, 0 if rate limited */
